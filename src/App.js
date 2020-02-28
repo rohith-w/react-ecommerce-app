@@ -8,6 +8,8 @@ import ProductList from './components/ProductList';
 import Cart from './components/Cart';
 import Default from './components/Default';
 import Modal from './components/Modal'
+import CompareModal from './components/CompareModal';
+import CompareProduct from './components/Compare Products/CompareProduct';
 
 class App extends Component {
   render() {
@@ -18,9 +20,11 @@ class App extends Component {
           <Route exact path='/' component={ProductList}></Route>
           <Route path='/details' component={Details}></Route>
           <Route path='/cart' component={Cart}></Route>
+          <Route path='/compare' component={CompareProduct}></Route>
           <Route component={Default}></Route>
         </Switch>
         <Modal/>
+        <CompareModal />
       </React.Fragment>
     );
   } 

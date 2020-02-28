@@ -12,6 +12,9 @@ const ProductContext = React.createContext();
          cart : [],
          modalOpen : false,
          modalProduct : detailProduct,
+         modalCompareOpen : false,
+         modalCompareProduct : detailProduct,
+         compareList : [],
          cartSubTotal : 0,
          cartTax : 0,
          cartTotal : 0
@@ -68,6 +71,28 @@ const ProductContext = React.createContext();
     closeModal = () => {
         this.setState(() => {
             return{modalOpen:false}
+        })
+    }
+
+    addToCompare = (id) => {
+        let tempProducts = [...this.state.products];
+        const index = tempProducts.indexOf(this.getItem(id));
+        const product = tempProducts[index]; 
+        this.setState(() => {
+            return {products : tempProducts, compareList : [...this.state.compareList,product]}
+        })        
+    }
+
+    openCompareModal = (id) => {
+        const product = this.getItem(id);
+        this.setState(() => {
+            return {modalCompareProduct:product, modalCompareOpen:true}
+        })
+    }
+
+    closeCompareModal = () => {
+        this.setState(() => {
+            return{modalCompareOpen:false}
         })
     }
 
@@ -157,7 +182,10 @@ const ProductContext = React.createContext();
                 increment : this.increment,
                 decrement : this.decrement,
                 removeItem : this.removeItem,
-                clearCart : this.clearCart
+                clearCart : this.clearCart,
+                openCompareModal: this.openCompareModal,
+                closeCompareModal : this.closeCompareModal,
+                addToCompare: this.addToCompare
             }}>
                 {this.props.children}
             </ProductContext.Provider>
