@@ -19,6 +19,12 @@ class Navbar extends Component {
                     <li className="nav-item ml-5">
                     <Link to='/compare' className="nav-link">Compare Products</Link>
                     </li>
+                    <li className="nav-item ml-5">
+                        <div className="searchbar">
+                            <input type="text" className="search_input" placeholder="Search..." />
+                            <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                        </div>
+                    </li>
                 </ul>
                 <Link to='/cart' className="ml-auto"> 
                     <ButtonContainer> <span className="mr-2"><i className="fas fa-cart-plus"></i></span> 
